@@ -1,8 +1,8 @@
 // File: main.cc
 
-#include "buttons.h"
-#include "packbox.h"
-#include "portaudio_io.h"
+#include "front/buttons.h"
+#include "front/packbox.h"
+#include "back/portaudio_io.h"
 #include <gtkmm/application.h>
 #include <portaudio.h>
 
