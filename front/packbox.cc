@@ -1,29 +1,17 @@
 #include "packbox.h"
 #include "buttons.h"
+#include "../back/button_connections.h" //connecting backend stuff with frontend stuff
 #include <cstdio> //For sprintf().
 #include <iostream>
 
-bool isRecording=false;
+ButtonConnections connections;
+void play_button_clicked(){
+	connections.play_connection();
+}
+void recording_button_clicked(){
+	connections.record_connection();
+}
 
-void recording_button_clicked()
-{
-	if (!isRecording){
-	    std::cout << "Recording..." << std::endl;
-	    isRecording=!isRecording;
-	}
-	else{
-		std::cout << "Stopped recording" << std::endl;
-		isRecording=!isRecording;
-	}
-}
-void play_button_clicked()
-{
-	if (isRecording){
-		std::cout << "Stopped recording" << std::endl;
-		isRecording=!isRecording;
-	}
-	std::cout << "Playing" << std::endl;
-}
 PackBox::PackBox(bool homogeneous, int spacing, Gtk::PackOptions options,
 		        int padding)
 	: Gtk::Box(Gtk::ORIENTATION_HORIZONTAL, spacing),
