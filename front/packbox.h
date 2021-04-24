@@ -12,7 +12,7 @@ class PackBox : public Gtk::Box
 
 
 	protected:
-		      Gtk::Button play_button, record_button;
+		      Gtk::Button play_button, record_button, settings_button;
 		      //PlayButton play_button;
 
 			  char padstr[80];
