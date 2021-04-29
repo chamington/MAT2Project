@@ -6,7 +6,9 @@ class ButtonConnections{
 		ButtonConnections();
 		~ButtonConnections();
 		void play_connection();
-		void record_connection();
+		void record_connection(unsigned int track);
+		void delete_connection(unsigned int track);
+		void add_track_connection();
 	private:
 		bool isRecording;
 };
