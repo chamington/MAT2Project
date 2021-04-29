@@ -4,8 +4,8 @@
 #include <gtkmm.h>
 #include <gtkmm/box.h>
 #include <gtkmm/window.h>
-#include "packbox.h"
-#include "settings.h"
+#include "main_box.h"
+#include "settings_window.h"
 
 class MainWindow : public Gtk::Window
 {
@@ -14,7 +14,8 @@ class MainWindow : public Gtk::Window
 
 		virtual ~MainWindow();
 	protected:
-		Gtk::Box buttons_box;
+		Gtk::Box main_box;
+		//Gtk::SettingsWindow* settings_window;
 };
 
 #endif

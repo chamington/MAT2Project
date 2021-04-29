@@ -1,7 +1,6 @@
 // File: main.cc
 
 #include "front/main_window.h"
-#include "front/packbox.h"
 #include "back/portaudio_io.h"
 #include <gtkmm/application.h>
 #include <portaudio.h>

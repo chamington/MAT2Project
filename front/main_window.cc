@@ -2,16 +2,17 @@
 #include "main_window.h"
 
 MainWindow::MainWindow()
-: buttons_box(Gtk::ORIENTATION_HORIZONTAL)
+: main_box(Gtk::ORIENTATION_HORIZONTAL)
 {
+	std::cout<<"New window created"<<std::endl;
 	
 	this->set_border_width(10);
-	
-	PackBox *pPackBox1;
-	pPackBox1 = Gtk::manage(new PackBox(false, 0, Gtk::PACK_SHRINK));
-	buttons_box.pack_start(*pPackBox1, Gtk::PACK_SHRINK);
+	this->set_title("MAT2Project");	
+	MainBox *mainBox;
+	mainBox = Gtk::manage(new MainBox(false, 0, Gtk::PACK_SHRINK));
+	main_box.pack_start(*mainBox, Gtk::PACK_SHRINK);
 
-	this->add(buttons_box);
+	this->add(main_box);
 
 	this->show_all_children();
 	
@@ -20,4 +21,5 @@ MainWindow::MainWindow()
 
 MainWindow::~MainWindow()
 {
+	std::cout<<"Window deleted"<<std::endl;
 }
