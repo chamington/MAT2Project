@@ -28,8 +28,8 @@ void MainBox::print_tracks(){
 	}
 }
 
-void MainBox::record_button_clicked(unsigned int position){
-	connections.record_connection(position);
+void MainBox::record_button_clicked(unsigned int* position){
+	connections.record_connection(*position);
 }
 
 void MainBox::delete_button_clicked(unsigned int* position){
@@ -56,16 +56,21 @@ void MainBox::add_track_button_clicked(){
 	else{
 		newTrackVisiblePos=tracks[tracks.size()-1]->visiblePosition+1;
 	}
-	TrackFront* track = new TrackFront(false, 0, Gtk::PACK_SHRINK, tracks.size(),"Track "+std::to_string(newTrackVisiblePos)+": ");
+	TrackFront* track = new TrackFront(false, 0, Gtk::PACK_SHRINK, tracks.size(),"     Track "+std::to_string(newTrackVisiblePos)+": ");
 	track->visiblePosition=newTrackVisiblePos;
 	tracks.push_back(track);
 	pack_start(*track, Gtk::PACK_SHRINK);
 	show_all_children();
-	track->record_button.signal_clicked().connect(sigc::bind<unsigned int>(sigc::mem_fun(this, &MainBox::record_button_clicked),track->getPosition()));
+	track->record_button.signal_clicked().connect(
+		sigc::bind<unsigned int*>(
+			sigc::mem_fun(this, &MainBox::record_button_clicked),
+			&track->pos
+		)
+	);
 	track->delete_button.signal_clicked().connect(
 		sigc::bind<unsigned int*>(
 			sigc::mem_fun(this, &MainBox::delete_button_clicked),
-			sigc::ref(&(track->pos))
+			&track->pos
 		)
 	);
 	connections.add_track_connection();

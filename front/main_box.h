@@ -12,7 +12,7 @@ class MainBox : public Gtk::Box {
 		//std::vector<TrackFront*> tracks;
 		void add_track_button_clicked();
 
-		void record_button_clicked(unsigned int position);
+		void record_button_clicked(unsigned int* position);
 		void delete_button_clicked(unsigned int* position);
 
 		void print_tracks();
